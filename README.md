@@ -1,15 +1,13 @@
-# Simple GDNative C++ demo
+# Godot Advanced Controls
 
-This is a small example using C++ to create a GDNative script
-that just showcases some very simple bare bones calls.
+This'll give your project access to motion controls and trackpads.
+There's a little demo project included to show how it's meant to be used.
 
 Language: [GDNative C++](https://docs.godotengine.org/en/latest/tutorials/scripting/gdnative/index.html)
 
-Renderer: GLES 2
+Renderer: GLES 3
 
 Dependencies:
- * You need [godot-cpp](https://github.com/godotengine/godot-cpp),
-   this is now a Git submodule of this repo.
  * `clang`, `gcc`, or any decent C++ compiler that's C++14 compatible.
 
 ## Compiling
@@ -22,9 +20,6 @@ scons platform=PLATFORM
 
 Where PLATFORM is: `windows`, `linux`, or `osx`.
 
-This creates the file `libsimple` in the respective
+This creates the file `libadvancedcontrols` in the respective
 subfolders in the `project/gdnative` directory.
 
-## Screenshots
-
-![Screenshot](screenshots/screenshot.png)
