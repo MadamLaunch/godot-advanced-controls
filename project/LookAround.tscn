@@ -1,0 +1,142 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://nodes/GyroBoy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://models/N.tscn" type="PackedScene" id=2]
+[ext_resource path="res://models/W.tscn" type="PackedScene" id=3]
+[ext_resource path="res://models/E.tscn" type="PackedScene" id=4]
+[ext_resource path="res://models/S.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/Motion.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/SliderValueLabel.gd" type="Script" id=7]
+
+[node name="Node" type="Node"]
+
+[node name="GyroSensitivity" type="PanelContainer" parent="."]
+margin_right = 479.0
+margin_bottom = 104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GyroSensitivity"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 472.0
+margin_bottom = 141.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GyroSensitivity/VBoxContainer"]
+margin_right = 465.0
+margin_bottom = 14.0
+text = "Gyro Sensitivity"
+align = 1
+
+[node name="X" type="HBoxContainer" parent="GyroSensitivity/VBoxContainer"]
+margin_top = 18.0
+margin_right = 465.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="GyroSensitivity/VBoxContainer/X"]
+margin_top = 1.0
+margin_right = 8.0
+margin_bottom = 15.0
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slider" type="HSlider" parent="GyroSensitivity/VBoxContainer/X"]
+margin_left = 12.0
+margin_right = 465.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 40, 0 )
+size_flags_horizontal = 3
+max_value = 2.0
+step = 0.01
+value = 0.05
+tick_count = 3
+ticks_on_borders = true
+
+[node name="XValue" type="Label" parent="GyroSensitivity/VBoxContainer"]
+margin_top = 38.0
+margin_right = 465.0
+margin_bottom = 52.0
+text = "0.05"
+align = 1
+script = ExtResource( 7 )
+
+[node name="Y" type="HBoxContainer" parent="GyroSensitivity/VBoxContainer"]
+margin_top = 56.0
+margin_right = 465.0
+margin_bottom = 72.0
+
+[node name="Label" type="Label" parent="GyroSensitivity/VBoxContainer/Y"]
+margin_top = 1.0
+margin_right = 7.0
+margin_bottom = 15.0
+text = "Y"
+
+[node name="Slider" type="HSlider" parent="GyroSensitivity/VBoxContainer/Y"]
+margin_left = 11.0
+margin_right = 465.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 40, 0 )
+size_flags_horizontal = 3
+max_value = 2.0
+step = 0.01
+value = 0.05
+tick_count = 3
+ticks_on_borders = true
+
+[node name="YValue" type="Label" parent="GyroSensitivity/VBoxContainer"]
+margin_top = 76.0
+margin_right = 465.0
+margin_bottom = 90.0
+text = "0.05"
+align = 1
+script = ExtResource( 7 )
+
+[node name="DampenGyro" type="CheckButton" parent="GyroSensitivity/VBoxContainer"]
+margin_top = 94.0
+margin_right = 465.0
+margin_bottom = 134.0
+text = "Dampen Gyroscope Values"
+
+[node name="Motion" parent="." instance=ExtResource( 6 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -106.0
+margin_bottom = 0.0
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="GyroBoy" parent="Spatial" instance=ExtResource( 1 )]
+x_sensitivity = NodePath("../../GyroSensitivity/VBoxContainer/X/Slider")
+y_sensitivity = NodePath("../../GyroSensitivity/VBoxContainer/Y/Slider")
+dampen_values = NodePath("../../GyroSensitivity/VBoxContainer/DampenGyro")
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0 )
+light_energy = 0.4
+
+[node name="Compass" type="Spatial" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+
+[node name="N" parent="Spatial/Compass" instance=ExtResource( 2 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, -15 )
+
+[node name="S" parent="Spatial/Compass" instance=ExtResource( 5 )]
+transform = Transform( -4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 0, 0, 15 )
+
+[node name="E" parent="Spatial/Compass" instance=ExtResource( 4 )]
+transform = Transform( -1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 15, 0, 0 )
+
+[node name="W" parent="Spatial/Compass" instance=ExtResource( 3 )]
+transform = Transform( -1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -15, 0, 0 )
+
+[connection signal="value_changed" from="GyroSensitivity/VBoxContainer/X/Slider" to="GyroSensitivity/VBoxContainer/XValue" method="_on_value_changed"]
+[connection signal="value_changed" from="GyroSensitivity/VBoxContainer/Y/Slider" to="GyroSensitivity/VBoxContainer/YValue" method="_on_value_changed"]

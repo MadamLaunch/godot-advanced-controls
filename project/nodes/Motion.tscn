@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/Motion.gd" type="Script" id=1]
+
+[node name="Motion" type="GridContainer"]
+margin_top = 70.0
+margin_right = 119.0
+margin_bottom = 176.0
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+accelerometer = NodePath("Accelerometer")
+gyroscope = NodePath("Gyroscope")
+
+[node name="AccelLabel" type="Label" parent="."]
+margin_right = 99.0
+margin_bottom = 48.0
+size_flags_vertical = 1
+text = "Accelerometer:"
+
+[node name="Accelerometer" type="Label" parent="."]
+margin_left = 109.0
+margin_right = 116.0
+margin_bottom = 48.0
+text = "x
+y
+z"
+
+[node name="GyroLabel" type="Label" parent="."]
+margin_top = 58.0
+margin_right = 99.0
+margin_bottom = 106.0
+size_flags_vertical = 1
+text = "Gyroscope:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gyroscope" type="Label" parent="."]
+margin_left = 109.0
+margin_top = 58.0
+margin_right = 116.0
+margin_bottom = 106.0
+text = "x
+y
+z"

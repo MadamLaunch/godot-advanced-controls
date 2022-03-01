@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/Touch.gd" type="Script" id=1]
+
+[node name="Touch" type="GridContainer"]
+margin_top = 196.0
+margin_right = 119.0
+margin_bottom = 234.0
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 2
+script = ExtResource( 1 )
+average = NodePath("Average")
+touches = NodePath("Touhes")
+
+[node name="AverageLabel" type="Label" parent="."]
+margin_right = 57.0
+margin_bottom = 14.0
+text = "Average:"
+
+[node name="Average" type="Label" parent="."]
+margin_left = 67.0
+margin_right = 67.0
+margin_bottom = 14.0
+
+[node name="TouchesLabel" type="Label" parent="."]
+margin_top = 24.0
+margin_right = 57.0
+margin_bottom = 38.0
+size_flags_vertical = 5
+text = "Touches:"
+
+[node name="Touhes" type="Label" parent="."]
+margin_left = 67.0
+margin_top = 24.0
+margin_right = 67.0
+margin_bottom = 38.0

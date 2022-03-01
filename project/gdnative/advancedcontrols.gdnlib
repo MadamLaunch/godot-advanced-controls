@@ -1,0 +1,18 @@
+[general]
+
+singleton=true
+load_once=true
+symbol_prefix="godot_"
+reloadable=false
+
+[entry]
+
+OSX.64="res://gdnative/osx/libadvancedcontrols.dylib"
+Windows.64="res://gdnative/windows/libadvancedcontrols.dll"
+X11.64="res://gdnative/linux/libadvancedcontrols.so"
+
+[dependencies]
+
+OSX.64=[  ]
+Windows.64=[  ]
+X11.64=[  ]
