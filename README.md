@@ -8,7 +8,7 @@ I have *no* idea how SCons works, and barely got it to compile for Linux.
 By the magic of open source technology, you're on your friggin' own if you
 run Windows or Mac.
 
-I'll happily accept any working alterations to the Scons file~!
+I'll happily accept any working alterations to the SCons file~!
 
 Language: [GDNative C++](https://docs.godotengine.org/en/latest/tutorials/scripting/gdnative/index.html)
 
