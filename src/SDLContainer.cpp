@@ -18,6 +18,7 @@ void SDLContainer::init() {
 	
 	SDL_SetHint(SDL_HINT_JOYSTICK_HIDAPI_PS4_RUMBLE, "1");
 	SDL_SetHint(SDL_HINT_JOYSTICK_HIDAPI_PS5, "1");
+	SDL_SetHint(SDL_HINT_JOYSTICK_HIDAPI_STEAM, "1");
 	
 	SDL_version compiled;
 	SDL_VERSION(&compiled);
